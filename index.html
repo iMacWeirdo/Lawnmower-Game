@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Lawnmower Game</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --sky-top: #BFE8FA;
+                --sky-bottom: #E9F8EA;
+                --sun: #FFC94A;
+                --grass: #3F8F29;
+                --grass-deep: #1F5C16;
+                --soil: #5B3A22;
+                --soil-deep: #3E2716;
+                --cream: #FFFCF3;
+                --ink: #20301A;
+                --ink-soft: #4C5E42;
+
+                --font-display: 'Baloo 2', 'Trebuchet MS', 'Segoe UI', sans-serif;
+                --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                padding: 48px 16px;
+                background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 55%, var(--sky-bottom) 100%);
+                font-family: var(--font-body);
+                color: var(--ink);
+                display: flex;
+                justify-content: center;
+            }
+
+            .lot {
+                width: 100%;
+                max-width: 640px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .brand-mark {
+                width: 64px;
+                height: 64px;
+            }
+
+            h1 {
+                font-family: var(--font-display);
+                font-weight: 800;
+                font-size: 2.1rem;
+                margin: 4px 0 0;
+                color: var(--grass-deep);
+            }
+
+            .tagline {
+                margin: 0 0 28px;
+                color: var(--ink-soft);
+                font-size: 0.95rem;
+            }
+
+            .picker {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+            }
+
+            .plot {
+                display: flex;
+                flex-direction: column;
+                border: 3px solid var(--ink);
+                border-radius: 16px;
+                overflow: hidden;
+                background: var(--cream);
+                text-decoration: none;
+                color: var(--ink);
+                box-shadow: 0 8px 0 rgba(32,48,26,0.15);
+                transition: transform 0.08s ease, box-shadow 0.08s ease;
+            }
+
+            .plot:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 11px 0 rgba(32,48,26,0.15);
+            }
+
+            .plot:active {
+                transform: translateY(3px);
+                box-shadow: 0 3px 0 rgba(32,48,26,0.15);
+            }
+
+            .swatch {
+                height: 96px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .swatch-classic {
+                background: repeating-linear-gradient(45deg, #4a7a34 0 10px, #3F8F29 10px 20px);
+            }
+
+            .swatch-new {
+                background:
+                    radial-gradient(circle at 75% 20%, var(--sun) 0%, rgba(255,201,74,0) 35%),
+                    linear-gradient(180deg, #DFF3FF 0%, #cdeccb 100%);
+            }
+
+            .swatch-mow {
+                width: 34px;
+                height: 34px;
+            }
+
+            .plot-body {
+                padding: 16px 16px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                flex: 1;
+            }
+
+            .plot-name {
+                font-family: var(--font-display);
+                font-weight: 700;
+                font-size: 1.15rem;
+                margin: 0;
+            }
+
+            .plot-desc {
+                margin: 0;
+                font-size: 0.82rem;
+                color: var(--ink-soft);
+                line-height: 1.4;
+                flex: 1;
+            }
+
+            .plot-cta {
+                margin-top: 10px;
+                align-self: flex-start;
+                font-family: var(--font-display);
+                font-weight: 600;
+                font-size: 0.85rem;
+                padding: 8px 14px;
+                border-radius: 8px;
+                border: 2px solid var(--ink);
+                background: var(--grass);
+                color: var(--cream);
+            }
+
+            .plot-new .plot-cta {
+                background: var(--sun);
+                color: var(--soil-deep);
+            }
+
+            .footnote {
+                margin-top: 30px;
+                font-size: 0.78rem;
+                color: var(--ink-soft);
+            }
+
+            @media (max-width: 520px) {
+                .picker {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="lot">
+            <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+                <circle cx="24" cy="46" r="9" fill="#20301A"/>
+                <circle cx="46" cy="46" r="9" fill="#20301A"/>
+                <circle cx="24" cy="46" r="4" fill="#FFC94A"/>
+                <circle cx="46" cy="46" r="4" fill="#FFC94A"/>
+                <path d="M14 40 L20 18 L44 18 L50 40 Z" fill="#3F8F29" stroke="#20301A" stroke-width="3" stroke-linejoin="round"/>
+                <rect x="27" y="6" width="6" height="16" rx="2" fill="#20301A"/>
+            </svg>
+            <h1>Mow Co.</h1>
+            <p class="tagline">Pick which lawn you'd like to mow today.</p>
+
+            <div class="picker">
+                <a class="plot plot-classic" href="./classic/">
+                    <div class="swatch swatch-classic">
+                        <svg class="swatch-mow" viewBox="0 0 64 64" aria-hidden="true">
+                            <circle cx="24" cy="46" r="9" fill="#20301A"/>
+                            <circle cx="46" cy="46" r="9" fill="#20301A"/>
+                            <path d="M14 40 L20 18 L44 18 L50 40 Z" fill="#FFFCF3" stroke="#20301A" stroke-width="3" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="plot-body">
+                        <p class="plot-name">Classic</p>
+                        <p class="plot-desc">The original, unstyled edition. Same upgrade math, save/load included, plain layout.</p>
+                        <span class="plot-cta">Mow the classic lawn</span>
+                    </div>
+                </a>
+
+                <a class="plot plot-new" href="./lawnv2/">
+                    <div class="swatch swatch-new">
+                        <svg class="swatch-mow" viewBox="0 0 64 64" aria-hidden="true">
+                            <circle cx="24" cy="46" r="9" fill="#20301A"/>
+                            <circle cx="46" cy="46" r="9" fill="#20301A"/>
+                            <path d="M14 40 L20 18 L44 18 L50 40 Z" fill="#3F8F29" stroke="#20301A" stroke-width="3" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="plot-body">
+                        <p class="plot-name">Remastered</p>
+                        <p class="plot-desc">A yard-themed redesign: toolshed upgrades, a compost prestige panel, same save files work here too.</p>
+                        <span class="plot-cta">Mow the new lawn</span>
+                    </div>
+                </a>
+            </div>
+
+            <p class="footnote">Saves are compatible between both versions — a .lawn file made in one loads fine in the other.</p>
+        </div>
+    </body>
+</html>
