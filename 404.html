@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Page Not Found — Mow Co.</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --sky-top: #BFE8FA;
+                --sky-bottom: #E9F8EA;
+                --sun: #FFC94A;
+                --grass: #3F8F29;
+                --grass-deep: #1F5C16;
+                --soil: #5B3A22;
+                --soil-deep: #3E2716;
+                --cream: #FFFCF3;
+                --ink: #20301A;
+                --ink-soft: #4C5E42;
+
+                --font-display: 'Baloo 2', 'Trebuchet MS', 'Segoe UI', sans-serif;
+                --font-body: 'Work Sans', system-ui, -apple-system, sans-serif;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                padding: 48px 16px;
+                background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 55%, var(--sky-bottom) 100%);
+                font-family: var(--font-body);
+                color: var(--ink);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .lot {
+                width: 100%;
+                max-width: 480px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 6px;
+            }
+
+            .patch {
+                position: relative;
+                width: 220px;
+                height: 220px;
+                margin-bottom: 12px;
+                border-radius: 16px;
+                border: 3px solid var(--ink);
+                background:
+                    repeating-linear-gradient(45deg, #4a7a34 0 10px, #3F8F29 10px 20px);
+                box-shadow: 0 10px 0 rgba(32,48,26,0.15);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .patch::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background:
+                    radial-gradient(circle at 20% 75%, rgba(91,58,34,0.55) 0 26px, transparent 27px),
+                    radial-gradient(circle at 68% 60%, rgba(91,58,34,0.55) 0 18px, transparent 19px),
+                    radial-gradient(circle at 40% 30%, rgba(91,58,34,0.4) 0 14px, transparent 15px);
+            }
+
+            .patch-code {
+                position: relative;
+                font-family: var(--font-display);
+                font-weight: 800;
+                font-size: 3.2rem;
+                color: var(--cream);
+                text-shadow: 0 3px 0 rgba(32,48,26,0.4);
+            }
+
+            h1 {
+                font-family: var(--font-display);
+                font-weight: 700;
+                font-size: 1.5rem;
+                margin: 4px 0 0;
+                color: var(--grass-deep);
+            }
+
+            p.lede {
+                margin: 6px 0 22px;
+                color: var(--ink-soft);
+                font-size: 0.92rem;
+                line-height: 1.5;
+            }
+
+            a.home-btn {
+                font-family: var(--font-display);
+                font-weight: 600;
+                font-size: 0.9rem;
+                padding: 10px 20px;
+                border-radius: 10px;
+                border: 2px solid var(--ink);
+                background: var(--sun);
+                color: var(--soil-deep);
+                text-decoration: none;
+                box-shadow: 0 4px 0 var(--ink);
+                transition: transform 0.06s ease, box-shadow 0.06s ease;
+            }
+
+            a.home-btn:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 5px 0 var(--ink);
+            }
+
+            a.home-btn:active {
+                transform: translateY(3px);
+                box-shadow: 0 1px 0 var(--ink);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="lot">
+            <div class="patch">
+                <span class="patch-code">404</span>
+            </div>
+            <h1>This patch hasn't been mowed.</h1>
+            <p class="lede">Mostly because it doesn't exist. The page you're looking for got overgrown or was never planted.</p>
+            <a class="home-btn" href="/">Back to the lawn</a>
+        </div>
+    </body>
+</html>
