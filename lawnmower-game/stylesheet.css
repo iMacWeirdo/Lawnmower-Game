@@ -1,0 +1,42 @@
+#lawn {
+    border: solid;
+    border-width: 3px;
+    margin: auto;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#desc {
+    position:fixed;
+    bottom:0;
+    right:10px;
+}
+
+#prestige {
+    position:fixed;
+    bottom: 0;
+}
+
+#superTicks {
+    position: fixed;
+    right:0;
+    top:0;
+}
+
+#saveload {
+    position: fixed;
+    top: 24px;
+    right: 0;
+    padding: 5px;
+    text-align: right;
+}
+
+#saveLoadStatus {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.85em;
+}
