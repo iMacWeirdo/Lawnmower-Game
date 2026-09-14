@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Lawnmower Game</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <script type="text/javascript" src="lawnmower-game/app.js"></script>
+        <link rel="stylesheet" href="lawnmower-game/stylesheet.css" type="text/css"/>
+    </head>
+    <body>
+        <div class="yard">
+
+            <header class="toolbar">
+                <div class="brand">
+                    <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+                        <circle cx="24" cy="46" r="9" fill="#20301A"/>
+                        <circle cx="46" cy="46" r="9" fill="#20301A"/>
+                        <circle cx="24" cy="46" r="4" fill="#FFC94A"/>
+                        <circle cx="46" cy="46" r="4" fill="#FFC94A"/>
+                        <path d="M14 40 L20 18 L44 18 L50 40 Z" fill="#3F8F29" stroke="#20301A" stroke-width="3" stroke-linejoin="round"/>
+                        <rect x="27" y="6" width="6" height="16" rx="2" fill="#20301A"/>
+                    </svg>
+                    <div class="brand-text">
+                        <p class="brand-name">Mow Co.</p>
+                        <p class="brand-sub">an idle lawn care outfit</p>
+                    </div>
+                </div>
+                <div id="saveload" class="toolbelt">
+                    <button id="saveButton" class="tool-btn" onclick="saveGame()">Save</button>
+                    <button id="loadButton" class="tool-btn" onclick="document.getElementById('loadFileInput').click()">Load</button>
+                    <input type="file" id="loadFileInput" accept=".lawn" onchange="loadGame(event)" style="display:none"/>
+                </div>
+            </header>
+
+            <p id="saveLoadStatus" class="save-status"></p>
+
+            <main class="field-stage">
+                <div class="canvas-frame">
+                    <canvas id="lawn" width="500" height="500">Canvas goes here</canvas>
+                </div>
+                <p id="desc" class="field-caption">Wow This Lawn Grows Fast</p>
+
+                <div class="stat-row">
+                    <div class="stat-chip stat-money">
+                        <span class="stat-label">Balance</span>
+                        <p id="money">$0</p>
+                    </div>
+                    <div class="stat-chip">
+                        <span class="stat-label">Lifetime</span>
+                        <p id="totalMowed">Total Grass Mowed: 0</p>
+                    </div>
+                </div>
+                <p id="superTicks" class="super-ticks"></p>
+
+                <nav class="field-nav">
+                    <button class="field-arrow" onclick="previous()" aria-label="Previous field">&lt;</button>
+                    <button id="unlock" class="unlock-btn" onclick="unlockNext()">Unlock Dust Field for $1000000</button>
+                    <button class="field-arrow" onclick="next()" aria-label="Next field">&gt;</button>
+                </nav>
+            </main>
+
+            <section class="upgrade-shed" id="area">
+                <h2 class="section-title">Toolshed Upgrades</h2>
+                <div class="upgrade-grid">
+                    <div class="upgrade-card">
+                        <button id="upgrademachineSpeed" onclick="upgrade('machineSpeed')">Machine Speed - $50</button>
+                        <span id="textmachineSpeed" class="upgrade-detail">Current: 1 tile/tick</span>
+                    </div>
+                    <div class="upgrade-card">
+                        <button id="upgrademachineSize" onclick="upgrade('machineSize')">Machine Size - $75</button>
+                        <span id="textmachineSize" class="upgrade-detail">Current: 1x1</span>
+                    </div>
+                    <div class="upgrade-card">
+                        <button id="upgradetileSize" onclick="upgrade('tileSize')">Machine Size - $75</button>
+                        <span id="texttileSize" class="upgrade-detail">Current: 20x20</span>
+                    </div>
+                    <div class="upgrade-card">
+                        <button id="upgradegrowthRate" onclick="upgrade('growthRate')">Growth Rate - $10</button>
+                        <span id="textgrowthRate" class="upgrade-detail">Current: 4 tiles/tick</span>
+                    </div>
+                    <div class="upgrade-card">
+                        <button id="upgradetickRate" onclick="upgrade('tickRate')">Tick Rate - $5</button>
+                        <span id="texttickRate" class="upgrade-detail">Current: 1000 ms</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="compost-bin" id="prestige">
+                <h2 class="section-title section-title-light">Compost &amp; Prestige</h2>
+                <p id="mulch">Mulch: 0</p>
+                <button id="prestigeButton" onclick="attemptPrestige()">Prestige for 0 Mulch</button>
+                <div class="bonus-row">
+                    <p id="valueBonus">Current Value Bonus: 0%</p>
+                    <p id="growthBonus">Current Growth Bonus: 0</p>
+                </div>
+            </section>
+
+        </div>
+    </body>
+</html>
